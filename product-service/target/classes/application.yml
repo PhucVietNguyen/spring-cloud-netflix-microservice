@@ -1,0 +1,36 @@
+server:
+  port: 8100
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product_db?currentSchema=product
+    name: product_service
+    username: postgres
+    password: anhphuc1996
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      max-wait: 10000
+      max-active: 50
+      test-on-borrow: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    openInView: false
+    show_sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+    properties:
+      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+      hibernate.cache.region.factory_class: org.hibernate.cache.internal.NoCachingRegionFactory
+      hibernate.jdbc.lob.non_contextual_creation: true
+#check-user-scopes: true
+#signing-key: ewjk@837@$#^.8$
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8000/oauth/check_token
+    client:
+      client-id: CLIENT_ID
+      client-secret: password
